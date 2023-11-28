@@ -469,8 +469,8 @@ void AutomaticModeScreen_Transitions(void){
 	}
 	
 	if(Pedal_Marcha_edge_Event == eNewEvent)
-	{
-		eNextState = PedalMarchaEdge_Handler();
+	{	
+		eNextState = PedalMarchaEdge_Handler();	
 	}
 }
 
@@ -552,6 +552,13 @@ void AutomaticProcessState_Actions(void){
 	
 }
 void AutomaticProcessState_Transitions(void){
+	
+	//Agregado
+	if(Pedal_Marcha_edge_Event == eNewEvent)
+	{
+		eNextState = RunAuto_Handler();
+	}
+	
 	if(Stop_Event == eNewEvent)
 	{
 		eNextState = Stop_Handler();
