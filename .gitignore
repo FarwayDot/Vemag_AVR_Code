@@ -1,0 +1,19 @@
+
+
+# Archivos AVR 
+
+*.cproj
+*.xmml
+
+debug/*.d
+debug/*.o
+debug/*.mk
+debug/*.eep
+debug/*.lss
+debug/*.map
+debug/*.srec
+debug/*.mk
+debug/Makefile
+
+
+
