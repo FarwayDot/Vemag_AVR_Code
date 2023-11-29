@@ -112,16 +112,7 @@ int main(void){
 	{	//value = ((float)ADC_Driver_Read(CH_AI1));
 		if(TIFR2 & (1<<OCF2B))
 		{	
-			TIFR2 &= ~(1<<OCF2B);
-			if(i<255)
-			{
-				i++;
-			}
-			else
-			{
-				i=0;
-			}
-			
+			TIFR2 &= ~(1<<OCF2B);			
 			PWM2_Update_Duty_Hex(200);	
 		}
 	}
