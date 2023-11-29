@@ -76,89 +76,93 @@ ISR (TIMER3_COMPA_vect)    // Timer1 ISR
 int main(void){
 	
     GPIO_Driver_Initialize();
-	ADC_Driver_Initialize();
-	PWM1_Driver_Initialize();  
+	//ADC_Driver_Initialize();
+	//PWM1_Driver_Initialize();  
 	PWM2_Driver_Initialize();
-	Encoder_Driver_Initialize();
-	Interrupt_Initialize();
+	//Encoder_Driver_Initialize();
+	//Interrupt_Initialize();
+	//
+	//LCD_Init_4_Bits();
+//
+	//sei();
+	//
+	//LCD_Tx_Command(LCD_CLEAR);
+	//LCD_Tx_Command(LCD_HOME);
+	//LCD_Goto_XY(1, 1);
+	//LCD_Put_String("     BIENVENIDO     ");
+	//LCD_Goto_XY(1, 2);
+	//LCD_Put_String(" VEMAG - Embutidora ");
+	//
+	//_delay_ms(2000);
+	//LCD_Tx_Command(LCD_CLEAR);
+	//
+	//LCD_Goto_XY(1, 1);
+	//LCD_Put_String("     EPLIMIN.SAC    ");
+	//LCD_Goto_XY(1, 2);
+	//LCD_Put_String(" Telefono: 326-2298 ");
+	//
+	//_delay_ms(2000);
+	//LCD_Tx_Command(LCD_CLEAR);
 	
-	LCD_Init_4_Bits();
-
-	sei();
-	
-	LCD_Tx_Command(LCD_CLEAR);
-	LCD_Tx_Command(LCD_HOME);
-	LCD_Goto_XY(1, 1);
-	LCD_Put_String("     BIENVENIDO     ");
-	LCD_Goto_XY(1, 2);
-	LCD_Put_String(" VEMAG - Embutidora ");
-	
-	_delay_ms(2000);
-	LCD_Tx_Command(LCD_CLEAR);
-	
-	LCD_Goto_XY(1, 1);
-	LCD_Put_String("     EPLIMIN.SAC    ");
-	LCD_Goto_XY(1, 2);
-	LCD_Put_String(" Telefono: 326-2298 ");
-	
-	_delay_ms(2000);
-	LCD_Tx_Command(LCD_CLEAR);
-	
-	
-    while (1) 
-    {	
-		
-		eNewEvent = ReadEvent();
-		switch(eNextState)
-		{
-			case Initial_Screen_State:
-			{
-				InitialScreenState_Actions();
-				InitialScreenState_Transitions();
-			}
-			break;
-			case Automatic_Mode_Screen_State:
-			{
-				AutomaticModeScreen_Actions();
-				AutomaticModeScreen_Transitions();
-			}
-			break;
-			case Manual_Mode_Screen_State:
-			{
-				ManualModeScreen_Actions();
-				ManualModeScreen_Transitions();
-				
-			}
-			break;
-			case Automatic_Process_State:
-			{
-				AutomaticProcessState_Actions();
-				AutomaticProcessState_Transitions();
-			}
-			break;
-			case Manual_Process_State:
-			{
-				ManualProcessState_Actions();
-				ManualProcessState_Transitions();
-			}
-			break;
-			case Reset_Count_State:
-			{
-				ResetCountState_Actions();
-				ResetCountState_Transitions();
-			}
-			break;
-			case Sensors_Alarm_State:
-			{
-				SensorsAlarmState_Actions();
-				SensorsAlarmState_Transitions();
-			}
-			break;
-			default:
-			;
-			break;
-		}
+	while (1)
+	{
+		PWM2_Start();
 	}
+	
+    //while (1) 
+    //{	
+		//
+		//eNewEvent = ReadEvent();
+		//switch(eNextState)
+		//{
+			//case Initial_Screen_State:
+			//{
+				//InitialScreenState_Actions();
+				//InitialScreenState_Transitions();
+			//}
+			//break;
+			//case Automatic_Mode_Screen_State:
+			//{
+				//AutomaticModeScreen_Actions();
+				//AutomaticModeScreen_Transitions();
+			//}
+			//break;
+			//case Manual_Mode_Screen_State:
+			//{
+				//ManualModeScreen_Actions();
+				//ManualModeScreen_Transitions();
+				//
+			//}
+			//break;
+			//case Automatic_Process_State:
+			//{
+				//AutomaticProcessState_Actions();
+				//AutomaticProcessState_Transitions();
+			//}
+			//break;
+			//case Manual_Process_State:
+			//{
+				//ManualProcessState_Actions();
+				//ManualProcessState_Transitions();
+			//}
+			//break;
+			//case Reset_Count_State:
+			//{
+				//ResetCountState_Actions();
+				//ResetCountState_Transitions();
+			//}
+			//break;
+			//case Sensors_Alarm_State:
+			//{
+				//SensorsAlarmState_Actions();
+				//SensorsAlarmState_Transitions();
+			//}
+			//break;
+			//default:
+			//;
+			//break;
+		//}
+	//}
 
 }
 
