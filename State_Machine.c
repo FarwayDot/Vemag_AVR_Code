@@ -64,11 +64,11 @@ uint8_t currentButton_StartEdge = 1;
 uint8_t previousButton_StartEdgeRising = 0;
 uint8_t currentButton_StartEdgeRising = 0;
 
-float constateConversiontoPorcentage = 0.393;//0.3937 ; 
+float constateConversiontoPorcentage = 1;//0.3937 ; 
 float constantEscalerEnconder = 0.000976525  ; //0.1
 
-uint8_t offset_pwm = 15;
-float mult_pwm = 0.2;
+float offset_pwm = 20;
+float mult_pwm =0.2;
 
 uint8_t AlarmEdge_H_OIL = 0;
 uint8_t AlarmEdge_L_OIL = 0;
@@ -536,7 +536,7 @@ void AutomaticProcessState_Actions(void){
 	ADC_lecture = ADC_lecture* constateConversiontoPorcentage;
 	
 	//PWM1_Update_Duty(50);
-	PWM2_Update_Duty( offset_pwm + ADC_lecture * mult_pwm);
+	PWM2_Update_Duty(offset_pwm + (ADC_lecture*mult_pwm));
 	
 	PWM1_Start();
 	PWM2_Start();
@@ -585,7 +585,7 @@ void ManualProcessState_Actions(void){
 	ADC_lecture = ADC_lecture* constateConversiontoPorcentage;
 	
 	//PWM1_Update_Duty(50);
-	PWM2_Update_Duty( offset_pwm + ADC_lecture * mult_pwm);
+	PWM2_Update_Duty(offset_pwm + (ADC_lecture*mult_pwm));
 	
 	PWM1_Start();
 	PWM2_Start();
