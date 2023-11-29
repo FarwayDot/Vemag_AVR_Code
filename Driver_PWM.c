@@ -93,7 +93,7 @@ void PWM2_Stop(void){
 
 void PWM2_Update_Duty(float duty){
 	
-	uint8_t duty_hex =  (duty * 255)/100;
+	uint8_t duty_hex =  duty; //(duty * 255)/100;
 	OCR2B = duty_hex;	
 }
 
