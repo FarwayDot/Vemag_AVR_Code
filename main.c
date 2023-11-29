@@ -75,6 +75,9 @@ ISR (TIMER3_COMPA_vect)    // Timer1 ISR
 
 int main(void){
 	
+	uint16_t value=0;
+	uint8_t i = 0;
+	
     GPIO_Driver_Initialize();
 	//ADC_Driver_Initialize();
 	//PWM1_Driver_Initialize();  
@@ -103,10 +106,24 @@ int main(void){
 	//
 	//_delay_ms(2000);
 	//LCD_Tx_Command(LCD_CLEAR);
+	PWM2_Start();
 	
 	while (1)
-	{
-		PWM2_Start();
+	{	//value = ((float)ADC_Driver_Read(CH_AI1));
+		if(TIFR2 & (1<<OCF2B))
+		{	
+			TIFR2 &= ~(1<<OCF2B);
+			if(i<255)
+			{
+				i++;
+			}
+			else
+			{
+				i=0;
+			}
+			
+			PWM2_Update_Duty_Hex(200);	
+		}
 	}
 	
     //while (1) 

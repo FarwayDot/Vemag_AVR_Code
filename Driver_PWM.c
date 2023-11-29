@@ -61,20 +61,25 @@ void PWM2_Driver_Initialize(void){
 	DDR_PWM	|= (1 << CH_PWM2);
 	
 	/*	Top Value of 255 */
+	//Por configuración, el OCR2A es el valot TOP del contador de PWM 
 	OCR2A = 255;
 	
 	/*	Set Waveform Generation mode : PWM Phase Correct  :	
 					TCCR2A --> WGM2[1:0]	= 0b01  
 					TCCR2B --> WGM2[2]		= 0b1  */
+	//Este modo se diferencia porque cuenta ascendente y descendentemente. El valor
+	//Ascendente está limitado por el valor TOP, y el valor descendente por el valor Bottom o 0.
 	TCCR2A	|=	(1 << WGM20);	TCCR2A	&=	~(1 << WGM21);
 	TCCR2B	|=	(1 << WGM22);
 	
 	/*	Set Compare Output Mode for Channel B :	OC2B connected				
 					TCCR2A --> COM2B[1:0]	= 0b10  */
+	//Se configura la salida no invertida
 	TCCR2A	|=	(1 << COM2B1);	TCCR2A	&=	~(1 << COM2B0);	
 	
 	/*	Set Clock Pre-scaler:								
 					TCCR2B --> CS2[2:0]		= 0b110 */
+	//Un preescaler de 256, lo que significa que una cuenta del timer equivale a 256 del reloj principal
 	TCCR2B	|=	(1 << CS22) | (1 << CS21);	TCCR2B	&=	~( 1 << CS20 ) ;
 }
 
