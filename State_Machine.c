@@ -65,10 +65,10 @@ uint8_t previousButton_StartEdgeRising = 0;
 uint8_t currentButton_StartEdgeRising = 0;
 
 float constateConversiontoPorcentage = 1;//0.3937 ; 
-float constantEscalerEnconder = 0.000976525  ; //0.1
+float constantEscalerEnconder = 0.0025; //0.1
 
-float offset_pwm = 130;
-float mult_pwm =0.2;
+float offset_pwm = 95;
+float mult_pwm =0.19;
 
 uint8_t AlarmEdge_H_OIL = 0;
 uint8_t AlarmEdge_L_OIL = 0;
