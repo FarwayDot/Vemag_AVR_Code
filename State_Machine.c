@@ -64,8 +64,8 @@ uint8_t currentButton_StartEdge = 1;
 uint8_t previousButton_StartEdgeRising = 0;
 uint8_t currentButton_StartEdgeRising = 0;
 
-float constateConversiontoPorcentage = 1;//0.3937 ; 
-float constantEscalerEnconder = 0.0025; //0.1
+float constateConversiontoPorcentage = 0.3937 ; 
+float constantEscalerEnconder = 0.00125; //0.1
 
 float offset_pwm = 95;
 float mult_pwm =0.19;
@@ -533,11 +533,11 @@ void ManualModeScreen_Transitions(void){
 void AutomaticProcessState_Actions(void){
 
 	ADC_lecture = ADC_Driver_Read(CH_AI1);
-	ADC_lecture = ADC_lecture* constateConversiontoPorcentage;
+	
 	
 	//PWM1_Update_Duty(50);
 	PWM2_Update_Duty(offset_pwm + (ADC_lecture*mult_pwm));
-	
+	ADC_lecture = ADC_lecture* constateConversiontoPorcentage;
 	PWM1_Start();
 	PWM2_Start();
 
@@ -582,11 +582,11 @@ void AutomaticProcessState_Transitions(void){
 void ManualProcessState_Actions(void){
 
 	ADC_lecture = ADC_Driver_Read(CH_AI1);
-	ADC_lecture = ADC_lecture* constateConversiontoPorcentage;
+	
 	
 	//PWM1_Update_Duty(50);
 	PWM2_Update_Duty(offset_pwm + (ADC_lecture*mult_pwm));
-	
+	ADC_lecture = ADC_lecture* constateConversiontoPorcentage;
 	PWM1_Start();
 	PWM2_Start();
 	
